@@ -35,6 +35,16 @@
         position: relative;
         margin: 1rem;
         animation: none;
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        margin: 1rem auto;
+    }
+    
+    .hero-image {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 0;
     }
 
     .service-detail,

@@ -35,7 +35,7 @@
 }
 
 .highlight {
-    color: #1e1f63;
+    color: #ffc857;
 }
 
 .hero-subtitle {
@@ -78,7 +78,7 @@
 
 .floating-card:nth-child(2) {
     top: 50%;
-    right: 10%;
+    right: 30%;
     animation-delay: 2s;
 }
 
