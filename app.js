@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
+const nodemailer = require('nodemailer');
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const PORT = process.env.PORT || 3000;
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Middleware for parsing JSON and URL-encoded data
+app.use(express.urlencoded({ extended: false }));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,7 +43,35 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.render('contact', { 
         title: 'Contact Us - Sahab Solutions',
-        page: 'contact'
+        page: 'contact',
+        success: req.query.success
+    });
+});
+
+app.post('/contact', (req, res) => {
+    const { name, email, service, message } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    });
+
+    const mailOptions = {
+        from: email,
+        to: 'sahab.solutions25@gmail.com',
+        subject: `New Contact Form: ${service}`,
+        text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}`
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.redirect('/contact?success=false');
+        }
+        res.redirect('/contact?success=true');
     });
 });
 

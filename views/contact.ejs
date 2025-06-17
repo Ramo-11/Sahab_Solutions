@@ -12,13 +12,13 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <h2>Get in Touch</h2>
-                <p>Ready to transform your business with technology? We'd love to hear from you.</p>
+                <p>Ready to hire us for your next project? Let's make it happen.</p>
                 
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h4>Email</h4>
-                        <p>info@sahabsolutions.com</p>
+                        <p>sahabsolutions25@gmail.com</p>
                     </div>
                 </div>
                 
@@ -26,21 +26,18 @@
                     <i class="fas fa-phone"></i>
                     <div>
                         <h4>Phone</h4>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Office</h4>
-                        <p>123 Tech Street<br>Innovation City, TC 12345</p>
+                        <p>+1 (574)406-4727</p>
                     </div>
                 </div>
             </div>
             
             <div class="contact-form">
-                <form>
+                <% if (success === 'true') { %>
+                    <div class="alert-success">Message sent successfully!</div>
+                <% } else if (success === 'false') { %>
+                    <div class="alert-error">There was an error sending your message. Please try again.</div>
+                <% } %>
+                <form action="/contact" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
