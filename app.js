@@ -21,28 +21,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.get('/', (req, res) => {
     res.render('index', { 
-        title: 'Sahab Solutions - Technology Solutions Provider',
+        title: 'Sahab Solutions - Home',
         page: 'home'
     });
 });
 
 app.get('/services', (req, res) => {
     res.render('services', { 
-        title: 'Our Services - Sahab Solutions',
+        title: 'Sahab Solutions - Services',
         page: 'services'
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about', { 
-        title: 'About Us - Sahab Solutions',
+        title: 'Sahab Solutions - About Us',
         page: 'about'
     });
 });
 
 app.get('/contact', (req, res) => {
     res.render('contact', { 
-        title: 'Contact Us - Sahab Solutions',
+        title: 'Sahab Solutions - Contact Us',
         page: 'contact',
         success: req.query.success
     });
