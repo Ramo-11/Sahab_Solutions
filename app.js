@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+const helmet = require('helmet');
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.urlencoded({ extended: false }));
+
+app.use(helmet());
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -46,6 +49,17 @@ app.get('/contact', (req, res) => {
         page: 'contact',
         success: req.query.success
     });
+});
+
+const pages = ['/', '/about', '/contact', '/services'];
+
+app.get('/sitemap.xml', (req, res) => {
+  res.header('Content-Type', 'application/xml');
+  const urls = pages.map(p => `<url><loc>https://sahabsolutions.com${p}</loc></url>`).join('');
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${urls}
+  </urlset>`);
 });
 
 app.post('/contact', (req, res) => {
