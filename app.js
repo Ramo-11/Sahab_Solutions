@@ -43,6 +43,35 @@ app.get('/about', (req, res) => {
     });
 });
 
+app.get('/work', (req, res) => {
+    res.render('work', { 
+        title: 'Sahab Solutions - Our Work',
+        page: 'work'
+    });
+});
+
+// Individual project pages
+app.get('/work/noosaengage', (req, res) => {
+    res.render('projects/noosaengage', { 
+        title: 'Sahab Solutions - Noosa Engage',
+        page: 'work'
+    });
+});
+
+app.get('/work/corporate-website', (req, res) => {
+    res.render('projects/corporate', { 
+        title: 'Sahab Solutions - Website',
+        page: 'work'
+    });
+});
+
+app.get('/work/ai-integrated-solution', (req, res) => {
+    res.render('projects/ai-solution', { 
+        title: 'Sahab Solutions - AI-Integrated Solution',
+        page: 'work'
+    });
+});
+
 app.get('/contact', (req, res) => {
     res.render('contact', { 
         title: 'Sahab Solutions - Contact Us',
@@ -51,7 +80,7 @@ app.get('/contact', (req, res) => {
     });
 });
 
-const pages = ['/', '/about', '/contact', '/services'];
+const pages = ['/', '/about', '/contact', '/services', '/work'];
 
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
@@ -65,7 +94,7 @@ app.get('/sitemap.xml', (req, res) => {
 app.post('/contact', (req, res) => {
     const { name, email, service, message } = req.body;
 
-    const transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransporter({
         service: 'gmail',
         auth: {
             user: process.env.MAIL_USER,
