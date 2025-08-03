@@ -3,6 +3,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const helmet = require('helmet');
+const { sendContactEmails } = require('./server/mailController');
 
 dotenv.config();
 
@@ -58,16 +59,9 @@ app.get('/work/noosaengage', (req, res) => {
     });
 });
 
-app.get('/work/corporate-website', (req, res) => {
-    res.render('projects/corporate', { 
-        title: 'Sahab Solutions - Website',
-        page: 'work'
-    });
-});
-
-app.get('/work/ai-integrated-solution', (req, res) => {
-    res.render('projects/ai-solution', { 
-        title: 'Sahab Solutions - AI-Integrated Solution',
+app.get('/work/masindy', (req, res) => {
+    res.render('projects/masindy', { 
+        title: 'Sahab Solutions - MAS Website',
         page: 'work'
     });
 });
@@ -91,31 +85,14 @@ app.get('/sitemap.xml', (req, res) => {
   </urlset>`);
 });
 
-app.post('/contact', (req, res) => {
-    const { name, email, service, message } = req.body;
-
-    const transporter = nodemailer.createTransporter({
-        service: 'gmail',
-        auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PASS
-        }
-    });
-
-    const mailOptions = {
-        from: email,
-        to: 'sahab.solutions25@gmail.com',
-        subject: `New Contact Form: ${service}`,
-        text: `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage:\n${message}`
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error sending email:', error);
-            return res.redirect('/contact?success=false');
-        }
+app.post('/contact', async (req, res) => {
+    try {
+        await sendContactEmails(req.body);
         res.redirect('/contact?success=true');
-    });
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.redirect('/contact?success=false');
+    }
 });
 
 app.listen(PORT, () => {
