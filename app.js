@@ -74,7 +74,7 @@ app.get('/contact', (req, res) => {
     });
 });
 
-const pages = ['/', '/about', '/contact', '/services', '/work'];
+const pages = ['/', '/about', '/contact', '/services', '/work', '/privacy', '/terms'];
 
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
@@ -93,6 +93,20 @@ app.post('/contact', async (req, res) => {
         console.error('Error sending email:', error);
         res.redirect('/contact?success=false');
     }
+});
+
+app.get('/privacy', (req, res) => {
+    res.render('privacy', { 
+        title: 'Sahab Solutions - Privacy Policy',
+        page: 'privacy'
+    });
+});
+
+app.get('/terms', (req, res) => {
+    res.render('terms', { 
+        title: 'Sahab Solutions - Terms of Service',
+        page: 'terms'
+    });
 });
 
 app.listen(PORT, () => {
