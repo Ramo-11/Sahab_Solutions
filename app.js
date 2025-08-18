@@ -59,6 +59,13 @@ app.get('/work/noosaengage', (req, res) => {
     });
 });
 
+app.get('/work/alhuda_spark', (req, res) => {
+    res.render('projects/alhuda_spark', { 
+        title: 'Sahab Solutions - Alhuda Spark Competition Platform',
+        page: 'work'
+    });
+});
+
 app.get('/work/masindy', (req, res) => {
     res.render('projects/masindy', { 
         title: 'Sahab Solutions - MAS Website',

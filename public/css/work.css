@@ -103,16 +103,22 @@
 }
 
 .project-category {
-    display: inline-block;
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 0.3rem 0.8rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    text-align: center;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 0.5rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
 }
 
 .project-content h3 {
