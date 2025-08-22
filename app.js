@@ -3,7 +3,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const helmet = require('helmet');
-const { sendContactEmails } = require('./server/mailController');
+const mailController = require('./server/mailController');
 
 dotenv.config();
 
@@ -74,10 +74,11 @@ app.get('/work/masindy', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
-    res.render('contact', { 
+    res.render('contact', {
         title: 'Sahab Solutions - Contact Us',
         page: 'contact',
-        success: req.query.success
+        success: req.query.success,
+        error: req.query.error
     });
 });
 
@@ -92,15 +93,12 @@ app.get('/sitemap.xml', (req, res) => {
   </urlset>`);
 });
 
-app.post('/contact', async (req, res) => {
-    try {
-        await sendContactEmails(req.body);
-        res.redirect('/contact?success=true');
-    } catch (error) {
-        console.error('Error sending email:', error);
-        res.redirect('/contact?success=false');
-    }
-});
+app.post(
+    '/contact',
+    mailController.rateLimit,   // (2) rate limit
+    mailController.slowDown,    // (2) slow down
+    mailController.handleContact // validate -> bot checks -> send -> redirect
+);
 
 app.get('/privacy', (req, res) => {
     res.render('privacy', { 
