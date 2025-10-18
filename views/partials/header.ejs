@@ -1,60 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-123WML43MK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-123WML43MK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
 
-        gtag('config', 'G-123WML43MK');
-    </script>
-    <meta name="description" content="Sahab Solutions - Technology, AI, Cybersecurity, and Web Development." />
-    <meta name="keywords" content="Sahab Solutions, AI, Cybersecurity, Web Development, Technology" />
-    <meta name="author" content="Sahab Solutions" />
-    <meta property="og:title" content="Sahab Solutions" />
-    <meta property="og:description" content="Technology, AI, Cybersecurity, and Web Services." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sahabsolutions.com" />
-    <meta property="og:image" content="/images/logo.png" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="canonical" href="https://sahabsolutions.com" />
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="icon" href="/images/logo.png" type="image/x-icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C72BSEFW2S"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-C72BSEFW2S');
-    </script>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/"><img src="/images/logo.png" alt="Company Logo"></a>
-                <a href="/"><h2>Sahab Solutions</h2></a>
+            gtag('config', 'G-123WML43MK');
+        </script>
+        <meta
+            name="description"
+            content="Sahab Solutions - Technology, AI, Cybersecurity, and Web Development."
+        />
+        <meta
+            name="keywords"
+            content="Sahab Solutions, AI, Cybersecurity, Web Development, Technology"
+        />
+        <meta name="author" content="Sahab Solutions" />
+        <meta property="og:title" content="Sahab Solutions" />
+        <meta
+            property="og:description"
+            content="Technology, AI, Cybersecurity, and Web Services."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sahabsolutions.com" />
+        <meta property="og:image" content="/images/logo.png" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title><%= title %></title>
+        <link rel="canonical" href="https://sahabsolutions.com" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+        />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C72BSEFW2S"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-C72BSEFW2S');
+        </script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="/"><img src="/images/logo.png" alt="Company Logo" /></a>
+                    <a href="/"><h2>Sahab Solutions</h2></a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>">Home</a>
+                    <a href="/services" class="nav-link <%= page === 'services' ? 'active' : '' %>"
+                        >Services</a
+                    >
+                    <a href="/products" class="nav-link <%= page === 'products' ? 'active' : '' %>"
+                        >Products</a
+                    >
+                    <a href="/work" class="nav-link <%= page === 'work' ? 'active' : '' %>"
+                        >Our Work</a
+                    >
+                    <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>"
+                        >About</a
+                    >
+                    <a href="/contact" class="nav-link <%= page === 'contact' ? 'active' : '' %>"
+                        >Contact</a
+                    >
+                </div>
+                <div class="nav-toggle" id="navToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="/" class="nav-link <%= page === 'home' ? 'active' : '' %>">Home</a>
-                <a href="/services" class="nav-link <%= page === 'services' ? 'active' : '' %>">Services</a>
-                <a href="/work" class="nav-link <%= page === 'work' ? 'active' : '' %>">Our Work</a>
-                <a href="/about" class="nav-link <%= page === 'about' ? 'active' : '' %>">About</a>
-                <a href="/contact" class="nav-link <%= page === 'contact' ? 'active' : '' %>">Contact</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
-    <main>
+        <main></main>
+    </body>
+</html>

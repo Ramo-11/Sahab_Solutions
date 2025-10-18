@@ -1,22 +1,22 @@
 // Add to the existing script.js file
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Existing code...
 
     // Portfolio Filter Functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
-    filterButtons.forEach(button => {
+    filterButtons.forEach((button) => {
         button.addEventListener('click', () => {
             // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
+            filterButtons.forEach((btn) => btn.classList.remove('active'));
             // Add active class to clicked button
             button.classList.add('active');
 
             const filterValue = button.getAttribute('data-filter');
 
-            projectCards.forEach(card => {
+            projectCards.forEach((card) => {
                 if (filterValue === 'all') {
                     card.style.display = 'block';
                     setTimeout(() => {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        
+
         setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animate stats on scroll
     const statNumbers = document.querySelectorAll('.stat-number');
     const animateStats = (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 const target = entry.target;
                 const finalValue = target.textContent;
                 const numericValue = parseInt(finalValue.replace(/\D/g, ''));
-                
+
                 if (!isNaN(numericValue)) {
                     let currentValue = 0;
                     const increment = numericValue / 50;
@@ -73,7 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             target.textContent = finalValue;
                             clearInterval(timer);
                         } else {
-                            target.textContent = Math.floor(currentValue) + (finalValue.includes('%') ? '%' : finalValue.includes('+') ? '+' : '');
+                            target.textContent =
+                                Math.floor(currentValue) +
+                                (finalValue.includes('%')
+                                    ? '%'
+                                    : finalValue.includes('+')
+                                    ? '+'
+                                    : '');
                         }
                     }, 40);
                 }
@@ -83,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const statsObserver = new IntersectionObserver(animateStats, {
-        threshold: 0.5
+        threshold: 0.5,
     });
 
-    statNumbers.forEach(stat => {
+    statNumbers.forEach((stat) => {
         statsObserver.observe(stat);
     });
 });
