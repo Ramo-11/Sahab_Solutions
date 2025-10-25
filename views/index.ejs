@@ -1,20 +1,24 @@
 <%- include('partials/header') %>
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Sahab Solutions",
-    "url": "https://sahabsolutions.com",
-    "logo": "https://sahabsolutions.com/images/logo.png",
-    "sameAs": []
-  }
-  </script>
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Sahab Solutions",
+        "url": "https://sahabsolutions.com",
+        "logo": "https://sahabsolutions.com/images/logo.png",
+        "sameAs": []
+    }
+</script>
 
 <section class="hero">
     <div class="hero-content">
-        <h1 class="hero-title">Web Development & Technology Solutions by <span class="highlight">Sahab Solutions</span></h1>
-        <p class="hero-subtitle">A modern and innovative company dedicated to providing high-quality digital services.</p>
+        <h1 class="hero-title">
+            Web Development & Technology Solutions by <span class="highlight">Sahab Solutions</span>
+        </h1>
+        <p class="hero-subtitle">
+            A modern and innovative company dedicated to providing high-quality digital services.
+        </p>
         <div class="hero-buttons">
             <a href="/services" class="btn btn-primary">Our Services</a>
             <a href="/contact" class="btn btn-secondary">Get Started</a>
@@ -49,29 +53,66 @@
                     <i class="fas fa-laptop-code"></i>
                 </div>
                 <h3>Website Development</h3>
-                <p>Custom, responsive websites built with modern technologies to elevate your online presence.</p>
+                <p>
+                    Custom, responsive websites built with modern technologies to elevate your
+                    online presence.
+                </p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-folder-open"></i>
                 </div>
                 <h3>Portfolio Development</h3>
-                <p>Professional portfolios that showcase your work, projects, and achievements with stunning visual presentations.</p>
+                <p>
+                    Professional portfolios that showcase your work, projects, and achievements with
+                    stunning visual presentations.
+                </p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-brain"></i>
                 </div>
                 <h3>AI Solutions</h3>
-                <p>Intelligent automation and AI-powered tools to streamline your business processes.</p>
+                <p>
+                    Intelligent automation and AI-powered tools to streamline your business
+                    processes.
+                </p>
             </div>
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-rocket"></i>
                 </div>
                 <h3>Technology Solutions</h3>
-                <p>Comprehensive tech consulting to help organizations achieve their digital transformation goals.</p>
+                <p>
+                    Comprehensive tech consulting to help organizations achieve their digital
+                    transformation goals.
+                </p>
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter-cta">
+    <div class="container">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2>Stay in the Loop</h2>
+                <p>
+                    Get updates on new products, features, and exclusive insights delivered to your
+                    inbox.
+                </p>
+            </div>
+            <form class="newsletter-form-inline" id="newsletterFormHome">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your email address"
+                    required
+                    class="newsletter-input-inline"
+                />
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <div class="newsletter-message" id="newsletterMessageHome"></div>
         </div>
     </div>
 </section>

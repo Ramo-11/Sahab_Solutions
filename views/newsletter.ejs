@@ -1,0 +1,84 @@
+<%- include('partials/header') %>
+
+<section class="newsletter-hero">
+    <div class="container">
+        <div class="newsletter-hero-content">
+            <div class="newsletter-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h1>Stay Connected with Sahab Solutions</h1>
+            <p class="newsletter-subtitle">
+                Get exclusive updates on new products, features, and technology insights delivered
+                straight to your inbox.
+            </p>
+
+            <div class="newsletter-benefits">
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Early access to new products and features</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Technology tips and best practices</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Exclusive insights and case studies</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>No spam, unsubscribe anytime</span>
+                </div>
+            </div>
+
+            <div class="newsletter-form-container">
+                <form class="newsletter-form-main" id="newsletterFormMain">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                        class="newsletter-input-main"
+                    />
+                    <button type="submit" class="btn btn-primary btn-large">Subscribe Now</button>
+                </form>
+                <div class="newsletter-message" id="newsletterMessageMain"></div>
+            </div>
+
+            <p class="newsletter-privacy">
+                We respect your privacy. Read our <a href="/privacy">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter-features">
+    <div class="container">
+        <h2>What You'll Get</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Product Launches</h3>
+                <p>Be the first to know when we release new apps, tools, and services.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Tech Insights</h3>
+                <p>Learn about the latest technology trends and how they can benefit you.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Exclusive Offers</h3>
+                <p>Get special discounts and early-bird access to our premium services.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>

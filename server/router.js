@@ -1,5 +1,7 @@
 const express = require('express');
 const contactController = require('./controllers/contactController');
+const newsletterController = require('./controllers/newsletterController');
+const rateLimit = require('express-rate-limit');
 
 const router = express.Router();
 
@@ -84,6 +86,13 @@ router.get('/work/masindy', (req, res) => {
     });
 });
 
+router.get('/newsletter', (req, res) => {
+    res.render('newsletter', {
+        title: 'Sahab Solutions - Newsletter Subscription',
+        page: 'newsletter',
+    });
+});
+
 // Sitemap
 router.get('/sitemap.xml', (req, res) => {
     const pages = ['/', '/about', '/contact', '/services', '/work', '/privacy', '/terms'];
@@ -103,6 +112,18 @@ router.post(
     contactController.rateLimit,
     contactController.slowDown,
     contactController.submitContactForm
+);
+
+const newsletterRateLimit = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 3, // limit each IP to 2 requests per windowMs
+    message: 'Too many subscription attempts, please try again later.',
+});
+
+router.post(
+    '/api/newsletter/subscribe',
+    newsletterRateLimit,
+    newsletterController.subscribeToNewsletter
 );
 
 module.exports = router;
