@@ -1,5 +1,6 @@
 const { isEmail } = require('validator');
 const nodemailer = require('nodemailer');
+const { encode } = require('he');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -48,6 +49,10 @@ const subscribeToNewsletter = async (req, res) => {
             // Send instant welcome email
             sendWelcomeEmail(email).catch((err) => {
                 console.error('Failed to send welcome email:', err);
+            });
+
+            notifyAdminNewSubscription(email, req.body.source).catch((err) => {
+                console.error('Failed to notify admin:', err);
             });
 
             return res.json({
@@ -101,6 +106,28 @@ async function sendWelcomeEmail(email) {
                     <p style="font-size: 0.85rem; color: #64748b;">
                         Questions? Reply to this email or contact us at <a href="mailto:sahab@sahab-solutions.com" style="color: #7117f2;">sahab@sahab-solutions.com</a>
                     </p>
+                </div>
+            </div>
+        `,
+    };
+
+    await transporter.sendMail(mailOptions);
+}
+
+async function notifyAdminNewSubscription(email, source) {
+    const mailOptions = {
+        from: process.env.MAIL_USER,
+        to: 'sahab@sahab-solutions.com',
+        subject: 'New Newsletter Subscription',
+        html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #f8fafc; padding: 20px;">
+                <div style="background: linear-gradient(135deg, #7117f2 0%, #1e1f63 100%); padding: 30px; border-radius: 10px; color: white; margin-bottom: 20px;">
+                    <h2 style="margin: 0;">New Newsletter Subscriber</h2>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                    <p><strong>Email:</strong> ${encode(email)}</p>
+                    <p><strong>Source:</strong> ${encode(source || 'unknown')}</p>
+                    <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
                 </div>
             </div>
         `,
