@@ -64,6 +64,21 @@ router.get('/terms', (req, res) => {
     });
 });
 
+// *********** FamilyEats App Legal Pages **********
+router.get('/family-eats/privacy-policy', (req, res) => {
+    res.render('family-eats/privacy-policy', {
+        title: 'FamilyEats - Privacy Policy',
+        page: 'family-eats',
+    });
+});
+
+router.get('/family-eats/terms-of-service', (req, res) => {
+    res.render('family-eats/terms-of-service', {
+        title: 'FamilyEats - Terms of Service',
+        page: 'family-eats',
+    });
+});
+
 // Individual project pages
 router.get('/work/noosaengage', (req, res) => {
     res.render('projects/noosaengage', {
@@ -98,7 +113,7 @@ router.get('/sitemap.xml', (req, res) => {
     const pages = ['/', '/about', '/contact', '/services', '/work', '/privacy', '/terms'];
 
     res.header('Content-Type', 'application/xml');
-    const urls = pages.map((p) => `<url><loc>https://sahabsolutions.com${p}</loc></url>`).join('');
+    const urls = pages.map((p) => `<url><loc>https://sahab-solutions.com${p}</loc></url>`).join('');
 
     res.send(`<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
